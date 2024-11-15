@@ -1,37 +1,87 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
-from .models import Advocate, Booking
-from django.contrib.auth.decorators import login_required
-from .forms import BookingForm  # Create a BookingForm
+from django.shortcuts import render,redirect
+from .models import *
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.contrib import messages
+import re
 
-def advocate_list(request):
-    advocates = Advocate.objects.all()
-    return render(request, 'advocate_list.html', {'advocates': advocates})
 
-@login_required
-def book_advocate(request, advocate_id):
-    advocate = Advocate.objects.get(id=advocate_id)
-    if request.method == 'POST':
-        form = BookingForm(request.POST)
-        if form.is_valid():
-            booking = form.save(commit=False)
-            booking.advocate = advocate
-            booking.client = request.user
-            booking.save()
-            return redirect('advocate_list')
+# Create your views here.
+
+def get_client(req):
+    data=Client.objects.get(Email=req.session['user'])
+    return data
+
+
+def get_advocate(req):
+    data=Advocate.objects.get(Email=req.session['shop'])
+    return data
+
+def login(req):
+    if 'user' in req.session:
+        return redirect(clienthome)
+    if 'advocate' in req.session:
+        return redirect(advocatehome)
+    
+
+    if req.method=='POST':
+        Email=req.POST['Email']
+        password=req.POST['password']
+        try:
+            data=Client.objects.get(Email=Email,password=password)
+            req.session['user']=data.Email
+            return redirect(clienthome)
+        except Client.DoesNotExist:
+            data=Advocate.objects.get(Email=Email,password=password)
+            req.session['advocate']=data.Email
+
+            return redirect(advocatehome)
     else:
-        form = BookingForm()
-    return render(request, 'book_advocate.html', {'form': form, 'advocate': advocate})
+        messages.warning(req, "INVALID INPUT !")
+    return render(req,'login.html')
+    
 
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('advocate_list')
-    else:
-        form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+def logout(req):
+    if 'user' in req.session:
+        del req.session['user']
+    if 'advocate' in req.session:
+        del req.session['advocate']
+    return redirect(login)
 
+
+def clientreg(req):
+
+    if req.method=='POST':
+        name=req.POST['username']
+        email=req.POST['Email']
+        phonenumber=req.POST['phonenumber']
+        location=req.POST['location']
+        password=req.POST['password']
+         # Validate email
+        try:
+            validate_email(email)
+        except ValidationError:
+            messages.warning(req, "Invalid email format, please enter a valid email.")
+            return render(req, 'clientreg.html')
+
+        # Validate phone number (assuming 10-digit numeric format)
+        if not re.match(r'^\d{10}$', phonenumber):
+            messages.warning(req, "Invalid phone number. Please enter a valid 10-digit phone number.")
+            return render(req, 'clientreg.html')
+        try:
+            data=Client.objects.create(username=name,Email=email,phonenumber=phonenumber,location=location,password=password)
+            data.save()
+            return redirect(login)
+        except:
+            messages.warning(req, "Email Already Exits , Try Another Email.")
+    return render(req,'clientreg.html')
+
+
+def clienthome(req):
+    if 'user' in req.session:
+        return redirect(clienthome)
+    
+def advocatehome(req):
+    if 'user' in req.session:
+        return redirect(advocatehome)
+    
