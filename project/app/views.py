@@ -14,7 +14,7 @@ def get_client(req):
 
 
 def get_advocate(req):
-    data=Advocate.objects.get(Email=req.session['shop'])
+    data=Advocate.objects.get(Email=req.session['advocate'])
     return data
 
 def login(req):
@@ -82,6 +82,6 @@ def clienthome(req):
         return redirect(clienthome)
     
 def advocatehome(req):
-    if 'user' in req.session:
+    if 'advocate' in req.session:
         return redirect(advocatehome)
     
