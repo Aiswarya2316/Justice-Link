@@ -76,12 +76,28 @@ def clientreg(req):
             messages.warning(req, "Email Already Exits , Try Another Email.")
     return render(req,'clientreg.html')
 
+def advocatereg(req):
+    if req.method=='POST':
+        name=req.POST['name']
+        email=req.POST['Email']
+        phonenumber=req.POST['phonenumber']
+        location=req.POST['location']
+        password=req.POST['password']
+        bio=req.POST['bio']
+        try:
+            data=Advocate.objects.create(name=name,Email=email,phonenumber=phonenumber,location=location,password=password,bio=bio)
+            data.save()
+            return redirect(login)
+        except:
+            messages.warning(req, "Email Already Exits , Try Another Email.")
+    return render(req,'advocatereg.html')
+
 
 def clienthome(req):
     if 'user' in req.session:
-        return redirect(clienthome)
+        return render(req,'clienthome.html')
     
 def advocatehome(req):
     if 'advocate' in req.session:
-        return redirect(advocatehome)
+        return render(req,'advocatehome.html')
     

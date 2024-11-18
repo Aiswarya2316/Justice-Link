@@ -72,14 +72,14 @@
         <form action="" method="POST">
             {% csrf_token %}
             <h2>Login</h2>
-          {% if messages %}
+          <!-- {% if messages %}
           {% for message in messages %}
           <div class="alert alert-warning alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             {{ message }}
           </div>
           {% endfor %}
-          {% endif %}
+          {% endif %} -->
             <input type="text" id="Email" name="Email" placeholder="Username" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button><br>
