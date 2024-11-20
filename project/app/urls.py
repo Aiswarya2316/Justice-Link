@@ -7,6 +7,12 @@ path('clientreg',views.clientreg),
 path('advocatereg',views.advocatereg),
 path('clienthome',views.clienthome),
 path('advocatehome',views.advocatehome),
+path('clientprofile',views.clientprofile),
+path('updateclientprofile',views.updateclientprofile),
+path('advocateprofile',views.advocateprofile),
+path('updateadvocateprofile',views.updateadvocateprofile),
+
+
 
     
 ]

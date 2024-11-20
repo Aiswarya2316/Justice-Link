@@ -9,12 +9,28 @@
   
   <!-- Font Awesome for social media icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .cart-btn:hover {
+  background-color: #64af3d;
+}
+.cart-btn {
+  display: inline-block;
+  background-color: #7DC855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-right: 40px;
+  padding: 12px 30px;
+  transition: all .5s;
+}
+  </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a href="../clienthome" class="logo">
+    <a href="../advocatehome" class="logo">
         <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -23,7 +39,7 @@
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="../clientprofile">Profile</a>
+          <a class="nav-link" href="../advocateprofile">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../viewadvocate">View Advocate</a>
@@ -72,8 +88,19 @@
   </div>
 </nav>
 
-<div>
-    <img src="static/1722325847_Emergency-Criminal-Justice-System.png" alt="justice" width="100%">
+<div class="container mt-3">
+    <div class="card" style="width:400px">
+      <img class="card-img-top" src="static/unnamed.webp" alt="Card image" style="width:100%">
+      <div class="card-body">
+        <h4 class="card-title">Name: {{data.name}}</h4>
+        <p class="card-text">Email: {{data.Email}}</p>
+        <p class="card-text">Phonenum: {{data.phonenumber}}</p>
+        <p>Location: {{data.location}}</p><br><br>
+        <a href="../updateadvocateprofile" class="cart-btn">update</a>
+
+      </div>
+    </div>
+  <p>
 </div>
 
 </body>

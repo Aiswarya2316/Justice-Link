@@ -6,6 +6,7 @@ from django.contrib import messages
 import re
 
 
+
 # Create your views here.
 
 def get_client(req):
@@ -100,4 +101,74 @@ def clienthome(req):
 def advocatehome(req):
     if 'advocate' in req.session:
         return render(req,'advocatehome.html')
+    
+
+
+##profile of user
+def clientprofile(req):
+    if 'user' in req.session:
+        return render(req,'clientprofile.html',{'data':get_client(req)})
+    else:
+        return redirect(login)
+    
+
+###profile update
+def updateclientprofile(req):
+    if 'user' in req.session:
+        try:
+            data = Client.objects.get(Email=req.session['user'])
+        except Client.DoesNotExist:
+            return redirect(login)
+
+        if req.method == 'POST':
+            name = req.POST['username']
+            phonenumber = req.POST['phonenumber']
+            location = req.POST['location']
+            if not re.match(r'^[789]\d{9}$', phonenumber):
+                return render(req, 'updateclientprofile.html', {
+                    'data': data,
+                    'error_message': 'Invalid phone number'
+                })
+            Client.objects.filter(Email=req.session['user']).update(username=name, phonenumber=phonenumber, location=location)
+            return redirect(clientprofile)
+        return render(req, 'updateclientprofile.html', {'data': data})
+
+    else:
+
+        return redirect(login)
+    
+
+
+##profile of advocate
+def advocateprofile(req):
+    if 'advocate' in req.session:
+        return render(req,'advocateprofile.html',{'data':get_advocate(req)})
+    else:
+        return redirect(login)
+    
+
+###profile update
+def updateadvocateprofile(req):
+    if 'advocate' in req.session:
+        try:
+            data = Advocate.objects.get(Email=req.session['advocate'])
+        except Advocate.DoesNotExist:
+            return redirect(login)
+
+        if req.method == 'POST':
+            name = req.POST['name']
+            phonenumber = req.POST['phonenumber']
+            location = req.POST['location']
+            if not re.match(r'^[789]\d{9}$', phonenumber):
+                return render(req, 'updateadvocateprofile.html', {
+                    'data': data,
+                    'error_message': 'Invalid phone number'
+                })
+            Advocate.objects.filter(Email=req.session['advocate']).update(name=name, phonenumber=phonenumber, location=location)
+            return redirect(advocateprofile)
+        return render(req, 'updateadvocateprofile.html', {'data': data})
+
+    else:
+
+        return redirect(login)
     
