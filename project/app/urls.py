@@ -11,6 +11,11 @@ path('clientprofile',views.clientprofile),
 path('updateclientprofile',views.updateclientprofile),
 path('advocateprofile',views.advocateprofile),
 path('updateadvocateprofile',views.updateadvocateprofile),
+path('viewadvocates',views.viewadvocates),
+path('viewclients',views.viewclients),
+
+
+
 
 
 

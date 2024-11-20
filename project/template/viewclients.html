@@ -9,8 +9,38 @@
   
   <!-- Font Awesome for social media icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.product img {
+  min-width: 250px;
+  min-height: 300px;
+  max-width: 250px;
+  max-height: 300px;
+    /* width: 150px;
+    height: 150px; */
+    display: block;
+}
+
+.product .description {
+    padding: 15px;
+}
+
+h3{
+    text-align: center;
+    color: rgb(38, 126, 96);
+}
+  </style>
 </head>
-<body>
+<body>  
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
@@ -70,8 +100,25 @@
 </nav>
 
 <div>
-    <img src="static/law-and-order_t.webp" alt="justice" width="100%">
+    <h3>clients</h3>
 </div>
+
+{% for i in data %}
+<div class="gallery">
+  <div class="product">
+      <!-- <img src="{{i.image.url}}" alt="Product 1"> -->
+      <div class="description">
+          <p>Email:{{i.Email}}</p>
+          <p class="price">Name:{{i.username}}</p>
+          <p class="phonenumber">Phone:{{i.phonenumber}}</p>
+          <p class="location">Location:{{i.location}}</p>
+
+         
+      </div>
+  </div>
+</div>
+{% endfor %}
+
 
 </body>
 </html>

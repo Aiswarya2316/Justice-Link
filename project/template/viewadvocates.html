@@ -9,12 +9,37 @@
   
   <!-- Font Awesome for social media icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.product img {
+  min-width: 250px;
+  min-height: 300px;
+  max-width: 250px;
+  max-height: 300px;
+    /* width: 150px;
+    height: 150px; */
+    display: block;
+}
+
+.product .description {
+    padding: 15px;
+}
+  </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a href="../advocatehome" class="logo">
+    <a href="../clienthome" class="logo">
         <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -23,14 +48,17 @@
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="../advocateprofile">Profile</a>
+          <a class="nav-link" href="../clientprofile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../viewclients">View Client</a>
+          <a class="nav-link" href="../viewadvocates">View Advocate</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../bookinghistory">Booking history</a>
+          <a class="nav-link" href="../advocatebookings">Bookings</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../contact">Contact</a>
+          </li>
         <li class="nav-item">
             <a class="nav-link" href="../logout">logout</a>
           </li>
@@ -69,9 +97,21 @@
   </div>
 </nav>
 
-<div>
-    <img src="static/law-and-order_t.webp" alt="justice" width="100%">
+{% for i in data %}
+<div class="gallery">
+  <div class="product">
+      <!-- <img src="{{i.image.url}}" alt="Product 1"> -->
+      <div class="description">
+          <h5>Email: {{i.Email}}</h5>
+          <p class="price">{{i.name}}</p>
+          <p class="phonenumber">{{i.phonenumber}}</p>
+          <p class="location">{{i.location}}</p>
+
+         
+      </div>
+  </div>
 </div>
+{% endfor %}
 
 </body>
 </html>

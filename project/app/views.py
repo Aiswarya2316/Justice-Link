@@ -172,3 +172,12 @@ def updateadvocateprofile(req):
 
         return redirect(login)
     
+
+
+def viewadvocates(req):
+    data=Advocate.objects.all()
+    return render(req,'viewadvocates.html', {'data':data})
+
+def viewclients(req):
+    data=Client.objects.all()
+    return render(req,'viewclients.html', {'data':data})
