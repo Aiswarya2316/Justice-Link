@@ -99,25 +99,25 @@ h3{
   </div>
 </nav>
 
-<div>
-    <h3>clients</h3>
-</div>
-
-{% for i in data %}
-<div class="gallery">
-  <div class="product">
-      <!-- <img src="{{i.image.url}}" alt="Product 1"> -->
-      <div class="description">
-        <p class="price">Name:{{i.username}}</p>
-          <p>Email:{{i.Email}}</p>
-          <p class="phonenumber">Phone:{{i.phonenumber}}</p>
-          <p class="location">Location:{{i.location}}</p>
-
-         
+<div class="container mt-4">
+  <h3>Clients</h3>
+  <div class="row">
+    {% for i in data %}
+    <div class="col-md-4 d-flex justify-content-center mb-4">
+      <div class="product">
+        <!-- Uncomment the line below if you have images -->
+        <!-- <img src="{{ i.image.url }}" alt="Product Image"> -->
+        <div class="description">
+          <p class="price">Name: {{ i.username }}</p>
+          <p>Email: {{ i.Email }}</p>
+          <p class="phonenumber">Phone: {{ i.phonenumber }}</p>
+          <p class="location">Location: {{ i.location }}</p>
+        </div>
       </div>
+    </div>
+    {% endfor %}
   </div>
 </div>
-{% endfor %}
 
 
 </body>

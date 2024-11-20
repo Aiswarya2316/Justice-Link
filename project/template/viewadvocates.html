@@ -33,6 +33,13 @@
 .product .description {
     padding: 15px;
 }
+
+h3{
+  text-align: center;
+  color: blueviolet;
+}
+
+
   </style>
 </head>
 <body>
@@ -97,21 +104,25 @@
   </div>
 </nav>
 
-{% for i in data %}
-<div class="gallery">
-  <div class="product">
-      <!-- <img src="{{i.image.url}}" alt="Product 1"> -->
-      <div class="description">
-        <p class="price">Name:{{i.name}}</p>
-          <p>Email: {{i.Email}}</p>
-          <p class="phonenumber">Phone:{{i.phonenumber}}</p>
-          <p class="location">Location:{{i.location}}</p>
-
-         
+<div class="container mt-4">
+  <h3>Advocates</h3>
+  <div class="row">
+    {% for i in data %}
+    <div class="col-md-4 d-flex justify-content-center mb-4">
+      <div class="product">
+        <!-- Uncomment if you have image URLs -->
+        <!-- <img src="{{ i.image.url }}" alt="Product"> -->
+        <div class="description">
+          <p class="price">Name: {{ i.name }}</p>
+          <p>Email: {{ i.Email }}</p>
+          <p class="phonenumber">Phone: {{ i.phonenumber }}</p>
+          <p class="location">Location: {{ i.location }}</p>
+        </div>
       </div>
+    </div>
+    {% endfor %}
   </div>
 </div>
-{% endfor %}
 
 </body>
 </html>
