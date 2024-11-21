@@ -10,30 +10,82 @@
   <!-- Font Awesome for social media icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
+    /* Add background image and ensure full screen height */
+    body {
+      background-image: url('static/istockphoto-1401548921-612x612.jpg'); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      z-index: 1200;
+    }
+
+    /* Center the form and make it transparent */
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      padding: 20px;
+    }
+
     .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 200px;
-  margin-left: 500px;
-  margin-bottom: 200px;
-  max-width: 500px;
-  /* margin: auto; */
-  text-align: center;
-  vertical-align: center;
-  font-family: arial;
-  padding: 50px;
-  /* padding-bottom: 50px; */
-}
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent white */
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+    }
 
-h2{
-    text-align: center;
-    color: chocolate;
-}
+    h3 {
+      text-align: center;
+      color: chocolate;
+    }
 
-/* .alert {
-    margin-bottom: 20px; 
-    text-align: center;
-    font-size: 16px;
-} */
+    /* h3 {
+      color: #333;
+    } */
+
+    label {
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 50%;
+      padding: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      width:50%;
+      height:50%;
+    }
+
+    .alert {
+      margin-bottom: 20px; 
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .btn-secondary{
+      background-color: rgb(44, 136, 131);
+    }
   </style>
 </head>
 <body>
@@ -52,36 +104,33 @@ h2{
           <a class="nav-link" href="../clientprofile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../viewadvocate">View Advocate</a>
+          <a class="nav-link" href="../viewadvocates">View Advocate</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../advocatebookings">Bookings</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../contact">Contact</a>
-          </li>
+        </li>
         <li class="nav-item">
-            <a class="nav-link" href="../logout">logout</a>
-          </li>
+            <a class="nav-link" href="../logout">Logout</a>
+        </li>
       </ul>
 
       <!-- Social Media Icons -->
       <ul class="navbar-nav d-flex">
-        <!-- Twitter Icon -->
         <li class="nav-item">
           <a class="nav-link" href="https://twitter.com" target="_blank">
             <i class="fab fa-twitter"></i>
           </a>
         </li>
         
-        <!-- Facebook Icon -->
         <li class="nav-item">
           <a class="nav-link" href="https://facebook.com" target="_blank">
             <i class="fab fa-facebook-f"></i>
           </a>
         </li>
         
-        <!-- Instagram Icon -->
         <li class="nav-item">
           <a class="nav-link" href="https://instagram.com" target="_blank">
             <i class="fab fa-instagram"></i>
@@ -98,31 +147,32 @@ h2{
   </div>
 </nav>
 
-<div>
-    <h2>Update your profile</h2>
-  </div>
-        
-<div class="card">
-    <form action="" method="post" >
-        {% csrf_token %}
-    <h3>Enter new updations</h3>
-        
-        <label for="">Name</label>
-    <input type="text"  name="username" value="{{data.username}}" placeholder="Enter your name"><br><br>
-        <label for="">Phone number</label>
-    <input type="number" name="phonenumber" value="{{data.phonenumber}}" placeholder="Enter your phonenumber">
-    {% if error_message %}
-    <div class="alert alert-danger" role="alert">
-        {{ error_message }}
-    </div>
-{% endif %}<br><br>
-        <label for="">Location</label>
-    <input type="text"  name="location" value="{{data.location}}" placeholder="Enter your location"><br><br>
-        <label for=""></label>
-    <input class="btn-primary" type="submit" value="submit" ><br>
-    </form>
-</div>
+<div class="form-container">
+    <div class="card">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h3>Enter new updations</h3>
+            
+            <label for="username">Name :</label>
+            <input type="text" name="username" value="{{data.username}}" placeholder="Enter your name"><br><br>
 
+            <label for="phonenumber">Phone number:</label>
+            <input type="number" name="phonenumber" value="{{data.phonenumber}}" placeholder="Enter your phone number">
+            
+            {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+            {% endif %}
+            <br><br>
+
+            <label for="location">Location:</label>
+            <input type="text" name="location" value="{{data.location}}" placeholder="Enter your location"><br><br>
+            
+            <input class="btn-secondary" type="submit" value="Submit"><br>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
