@@ -38,7 +38,20 @@ h3{
   text-align: center;
   color: blueviolet;
 }
-
+.cart-btn:hover {
+  background-color: #8b3daf;
+}
+.cart-btn {
+  display: inline-block;
+  background-color: #7DC855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-right: 40px;
+  padding: 12px 30px;
+  transition: all .5s;
+}
 
   </style>
 </head>
@@ -117,6 +130,7 @@ h3{
           <p>Email: {{ i.Email }}</p>
           <p class="phonenumber">Phone: {{ i.phonenumber }}</p>
           <p class="location">Location: {{ i.location }}</p>
+          <a href="../filecase/{{i.pk}}" type="submit" class="cart-btn">Select</a>
         </div>
       </div>
     </div>

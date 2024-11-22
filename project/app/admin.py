@@ -4,3 +4,5 @@ from .models import *
 # Register your models here.
 admin.site.register(Client)
 admin.site.register(Advocate)
+admin.site.register(Case)
+

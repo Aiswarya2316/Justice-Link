@@ -4,10 +4,8 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 import re
+from django.http import HttpResponse
 
-
-
-# Create your views here.
 
 def get_client(req):
     data=Client.objects.get(Email=req.session['user'])
@@ -17,6 +15,9 @@ def get_client(req):
 def get_advocate(req):
     data=Advocate.objects.get(Email=req.session['advocate'])
     return data
+
+
+
 
 def login(req):
     if 'user' in req.session:
@@ -48,6 +49,9 @@ def logout(req):
     if 'advocate' in req.session:
         del req.session['advocate']
     return redirect(login)
+
+
+
 
 
 def clientreg(req):
@@ -94,6 +98,8 @@ def advocatereg(req):
     return render(req,'advocatereg.html')
 
 
+
+
 def clienthome(req):
     if 'user' in req.session:
         return render(req,'clienthome.html')
@@ -102,6 +108,8 @@ def advocatehome(req):
     if 'advocate' in req.session:
         return render(req,'advocatehome.html')
     
+
+
 
 
 ##profile of user
@@ -139,6 +147,8 @@ def updateclientprofile(req):
     
 
 
+
+
 ##profile of advocate
 def advocateprofile(req):
     if 'advocate' in req.session:
@@ -174,6 +184,8 @@ def updateadvocateprofile(req):
     
 
 
+
+
 def viewadvocates(req):
     data=Advocate.objects.all()
     return render(req,'viewadvocates.html', {'data':data})
@@ -181,3 +193,48 @@ def viewadvocates(req):
 def viewclients(req):
     data=Client.objects.all()
     return render(req,'viewclients.html', {'data':data})
+
+
+
+
+
+
+def filecase(req,id):
+    if req.method == 'POST':
+        subject = req.POST['subject']
+        description = req.POST['description'] 
+        if 'user' in req.session:
+            client = Client.objects.get(pk=id)
+            advocate = Advocate.objects.get(pk=id)
+            case = Case.objects.create(
+            client=client,
+            advocate=advocate,
+            subject=subject,
+            description=description
+        )
+        case.save()
+        return redirect(clienthome)  
+    
+    else:
+        advocates = Advocate.objects.all()
+        return render(req, 'filecase.html', {'advocates': advocates})
+
+
+
+
+    
+
+
+def viewcases(req):
+    if req.method == 'POST':
+        advocate_id = req.POST['advocate_id']
+        advocate = Advocate.objects.get(id=advocate_id)
+        
+        cases = Case.objects.filter(advocate=advocate)
+        
+        return render(req, 'viewcases.html', {'cases': cases})
+    else:
+        advocates = Advocate.objects.all()
+        return render(req, 'viewcases.html', {'advocates': advocates})
+
+

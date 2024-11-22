@@ -15,7 +15,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a href="../advocatehome" class="logo">
-        <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
+        <img src="../static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
@@ -29,8 +29,8 @@
           <a class="nav-link" href="../viewclients">View Client</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../viewcases">View Cases</a>
-        </li>
+            <a class="nav-link" href="../viewcases">View Cases</a>
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="../bookinghistory">Booking history</a>
         </li>
@@ -72,9 +72,31 @@
   </div>
 </nav>
 
-<div>
-    <img src="static/law-and-order_t.webp" alt="justice" width="100%">
-</div>
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="advocate_id">Select Advocate</label>
+    <select name="advocate_id" required>
+        {% for advocate in advocates %}
+            <option value="{{ advocate.id }}">{{ advocate.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">View Assigned Cases</button>
+</form>
+
+<h2>Assigned Cases</h2>
+<ul>
+    {% for case in cases %}
+        <li>
+            <strong>Subject:</strong> {{ case.subject }}<br>
+            <strong>Description:</strong> {{ case.description }}<br>
+            <strong>Created At:</strong> {{ case.created_at }}<br>
+            <strong>Client:</strong> {{ case.client.username }}<br>
+        </li>
+    {% endfor %}
+</ul>
+
 
 </body>
 </html>

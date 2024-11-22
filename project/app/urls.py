@@ -13,6 +13,8 @@ path('advocateprofile',views.advocateprofile),
 path('updateadvocateprofile',views.updateadvocateprofile),
 path('viewadvocates',views.viewadvocates),
 path('viewclients',views.viewclients),
+path('filecase/<int:id>', views.filecase, name='filecase'),
+path('viewcases/', views.viewcases, name='viewcases'),
 
 
 
