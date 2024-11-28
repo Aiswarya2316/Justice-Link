@@ -236,5 +236,14 @@ def viewcases(req):
     else:
         advocates = Advocate.objects.all()
         return render(req, 'viewcases.html', {'advocates': advocates})
+    
+
+def bookings(req):
+        cases = Case.objects.all()
+        return render(req,'bookings.html',{'cases':cases})
 
 
+
+def bookinghistory(req):
+        cases = Case.objects.all()
+        return render(req,'bookinghistory.html',{'cases':cases})
