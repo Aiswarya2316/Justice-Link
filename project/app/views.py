@@ -72,14 +72,14 @@ def clientreg(req):
         # Validate phone number (assuming 10-digit numeric format)
         if not re.match(r'^\d{10}$', phonenumber):
             messages.warning(req, "Invalid phone number. Please enter a valid 10-digit phone number.")
-            return render(req, 'clientreg.html')
+            return render(req, 'Client/clientreg.html')
         try:
             data=Client.objects.create(username=name,Email=email,phonenumber=phonenumber,location=location,password=password)
             data.save()
             return redirect(login)
         except:
             messages.warning(req, "Email Already Exits , Try Another Email.")
-    return render(req,'clientreg.html')
+    return render(req,'Client/clientreg.html')
 
 def advocatereg(req):
     if req.method=='POST':
@@ -102,7 +102,7 @@ def advocatereg(req):
 
 def clienthome(req):
     if 'user' in req.session:
-        return render(req,'clienthome.html')
+        return render(req,'Client/clienthome.html')
     
 def advocatehome(req):
     if 'advocate' in req.session:
@@ -115,7 +115,7 @@ def advocatehome(req):
 ##profile of user
 def clientprofile(req):
     if 'user' in req.session:
-        return render(req,'clientprofile.html',{'data':get_client(req)})
+        return render(req,'Client/clientprofile.html',{'data':get_client(req)})
     else:
         return redirect(login)
     
@@ -139,7 +139,7 @@ def updateclientprofile(req):
                 })
             Client.objects.filter(Email=req.session['user']).update(username=name, phonenumber=phonenumber, location=location)
             return redirect(clientprofile)
-        return render(req, 'updateclientprofile.html', {'data': data})
+        return render(req, 'Client/updateclientprofile.html', {'data': data})
 
     else:
 
@@ -188,7 +188,7 @@ def updateadvocateprofile(req):
 
 def viewadvocates(req):
     data=Advocate.objects.all()
-    return render(req,'viewadvocates.html', {'data':data})
+    return render(req,'Client/viewadvocates.html', {'data':data})
 
 def viewclients(req):
     data=Client.objects.all()
@@ -217,7 +217,7 @@ def filecase(req,id):
     
     else:
         advocates = Advocate.objects.all()
-        return render(req, 'filecase.html', {'advocates': advocates})
+        return render(req, 'Client/filecase.html', {'advocates': advocates})
 
 
 
@@ -240,7 +240,7 @@ def viewcases(req):
 
 def bookings(req):
         cases = Case.objects.all()
-        return render(req,'bookings.html',{'cases':cases})
+        return render(req,'Client/bookings.html',{'cases':cases})
 
 
 
