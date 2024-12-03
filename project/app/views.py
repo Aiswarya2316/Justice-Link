@@ -5,6 +5,9 @@ from django.core.exceptions import ValidationError
 from django.contrib import messages
 import re
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 
 def get_client(req):
@@ -76,6 +79,11 @@ def clientreg(req):
         try:
             data=Client.objects.create(username=name,Email=email,phonenumber=phonenumber,location=location,password=password)
             data.save()
+            subject = 'Registration details '
+            message = 'ur account uname {}  and password {}'.format(name,password)
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            send_mail(subject, message, from_email, recipient_list,fail_silently=False)  
             return redirect(login)
         except:
             messages.warning(req, "Email Already Exits , Try Another Email.")
