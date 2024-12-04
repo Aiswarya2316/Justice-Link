@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Advocate Dashboard</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -9,58 +9,37 @@
   
   <!-- Font Awesome for social media icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .img{
+      max-height: 370px;
+    }
+  </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a href="../advocatehome" class="logo">
-        <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
+      <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px" >
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../advocateprofile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../viewclients">View Client</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../viewcases">View Cases</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../bookinghistory">Booking history</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../logout">logout</a>
-          </li>
+        <li class="nav-item"><a class="nav-link" href="../advocateprofile">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="../viewclients">View Client</a></li>
+        <li class="nav-item"><a class="nav-link" href="../viewcases">View Cases</a></li>
+        <li class="nav-item"><a class="nav-link" href="../bookinghistory">Booking History</a></li>
+        <li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
       </ul>
-
+      
       <!-- Social Media Icons -->
       <ul class="navbar-nav d-flex">
-        <!-- Twitter Icon -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com" target="_blank">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </li>
-        
-        <!-- Facebook Icon -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://facebook.com" target="_blank">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-        </li>
-        
-        <!-- Instagram Icon -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://instagram.com" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li class="nav-item"><a class="nav-link" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+        <li class="nav-item"><a class="nav-link" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
       </ul>
 
       <!-- Search Form -->
@@ -72,9 +51,81 @@
   </div>
 </nav>
 
+<!-- Main Image -->
 <div>
-    <img src="static/law-and-order_t.webp" alt="justice" width="100%">
+  <img src="static/law-and-order_t.webp" alt="justice" width="100%" class="img">
 </div>
+
+<!-- Last 4 Cases Section -->
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Details</h2>
+  <div class="row">
+    <!-- Example of a Case Card -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cases</h5>
+          <p class="card-text"> About the case.</p>
+          <a href="../viewcases" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">History</h5>
+          <p class="card-text">Brief details about the case.</p>
+          <a href="../bookinghistory" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Clients</h5>
+          <p class="card-text">Brief details about the clients.</p>
+          <a href="../viewclients" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-4">
+  <div class="container">
+    <!-- Footer Table -->
+    <table class="table table-dark table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-center">About</th>
+          <th class="text-center">Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-justify align-middle">
+            * Justice-Link is a platform connecting clients and advocates. 
+            <br>* The law treats everyone equally in the eyes of justice. 
+            <br>* Justice-Link facilitates communication with advocates to ensure justice is served.
+          </td>
+          <td class="text-start align-middle">
+            <strong>Phone:</strong> 987 665 4310 
+            <br> <strong>Location:</strong> All Kerala
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Footer Content -->
+    <p>@ 2024 Justice-Link. All Rights Reserved.</p>
+    <div>
+      <a href="https://twitter.com" target="_blank" class="text-light mx-2"><i class="fab fa-twitter"></i></a>
+      <a href="https://facebook.com" target="_blank" class="text-light mx-2"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank" class="text-light mx-2"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

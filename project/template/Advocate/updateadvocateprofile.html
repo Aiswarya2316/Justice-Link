@@ -10,6 +10,10 @@
   <!-- Font Awesome for social media icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
+
+.img{
+      max-height: 370px;
+    }
     .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-top: 200px;
@@ -32,55 +36,29 @@ h2{
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a href="../clienthome" class="logo">
-        <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
+    <a href="../advocatehome" class="logo">
+      <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px" >
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../clientprofile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../viewclients">View Client</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../advocatebookings">Bookings</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../contact">Contact</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../logout">logout</a>
-          </li>
+        <li class="nav-item"><a class="nav-link" href="../advocateprofile">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="../viewclients">View Client</a></li>
+        <li class="nav-item"><a class="nav-link" href="../viewcases">View Cases</a></li>
+        <li class="nav-item"><a class="nav-link" href="../bookinghistory">Booking History</a></li>
+        <li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
       </ul>
-
+      
       <!-- Social Media Icons -->
       <ul class="navbar-nav d-flex">
-        <!-- Twitter Icon -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com" target="_blank">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </li>
-        
-        <!-- Facebook Icon -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://facebook.com" target="_blank">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-        </li>
-        
-        <!-- Instagram Icon -->
-        <li class="nav-item">
-          <a class="nav-link" href="https://instagram.com" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li class="nav-item"><a class="nav-link" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+        <li class="nav-item"><a class="nav-link" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
       </ul>
 
       <!-- Search Form -->
@@ -91,6 +69,11 @@ h2{
     </div>
   </div>
 </nav>
+
+<!-- Main Image -->
+<div>
+  <img src="static/law-and-order_t.webp" alt="justice" width="100%" class="img">
+</div>
 
 <div>
     <h2>Update your profile</h2>
@@ -117,6 +100,40 @@ h2{
     </form>
 </div>
 
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3 mt-4">
+  <div class="container">
+    <!-- Footer Table -->
+    <table class="table table-dark table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-center">About</th>
+          <th class="text-center">Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-justify align-middle">
+            * Justice-Link is a platform connecting clients and advocates. 
+            <br>* The law treats everyone equally in the eyes of justice. 
+            <br>* Justice-Link facilitates communication with advocates to ensure justice is served.
+          </td>
+          <td class="text-start align-middle">
+            <strong>Phone:</strong> 987 665 4310 
+            <br> <strong>Location:</strong> All Kerala
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Footer Content -->
+    <p>@ 2024 Justice-Link. All Rights Reserved.</p>
+    <div>
+      <a href="https://twitter.com" target="_blank" class="text-light mx-2"><i class="fab fa-twitter"></i></a>
+      <a href="https://facebook.com" target="_blank" class="text-light mx-2"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank" class="text-light mx-2"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

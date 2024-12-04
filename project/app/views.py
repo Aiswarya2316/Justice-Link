@@ -114,7 +114,7 @@ def clienthome(req):
     
 def advocatehome(req):
     if 'advocate' in req.session:
-        return render(req,'advocatehome.html')
+        return render(req,'Advocate/advocatehome.html')
     
 
 
@@ -160,7 +160,7 @@ def updateclientprofile(req):
 ##profile of advocate
 def advocateprofile(req):
     if 'advocate' in req.session:
-        return render(req,'advocateprofile.html',{'data':get_advocate(req)})
+        return render(req,'Advocate/advocateprofile.html',{'data':get_advocate(req)})
     else:
         return redirect(login)
     
@@ -184,7 +184,7 @@ def updateadvocateprofile(req):
                 })
             Advocate.objects.filter(Email=req.session['advocate']).update(name=name, phonenumber=phonenumber, location=location)
             return redirect(advocateprofile)
-        return render(req, 'updateadvocateprofile.html', {'data': data})
+        return render(req, 'Advocate/updateadvocateprofile.html', {'data': data})
 
     else:
 
@@ -200,7 +200,7 @@ def viewadvocates(req):
 
 def viewclients(req):
     data=Client.objects.all()
-    return render(req,'viewclients.html', {'data':data})
+    return render(req,'Advocate/viewclients.html', {'data':data})
 
 
 
@@ -240,10 +240,10 @@ def viewcases(req):
         
         cases = Case.objects.filter(advocate=advocate)
         
-        return render(req, 'viewcases.html', {'cases': cases})
+        return render(req, 'Advocate/viewcases.html', {'cases': cases})
     else:
         advocates = Advocate.objects.all()
-        return render(req, 'viewcases.html', {'advocates': advocates})
+        return render(req, 'Advocate/viewcases.html', {'advocates': advocates})
     
 
 def bookings(req):
@@ -254,4 +254,4 @@ def bookings(req):
 
 def bookinghistory(req):
         cases = Case.objects.all()
-        return render(req,'bookinghistory.html',{'cases':cases})
+        return render(req,'Advocate/bookinghistory.html',{'cases':cases})
