@@ -37,10 +37,16 @@ def login(req):
             req.session['user']=data.Email
             return redirect(clienthome)
         except Client.DoesNotExist:
-            data=Advocate.objects.get(Email=Email,password=password)
-            req.session['advocate']=data.Email
+            try:
+                data=Advocate.objects.get(Email=Email,password=password)
+                req.session['advocate']=data.Email
 
-            return redirect(advocatehome)
+                return redirect(advocatehome)
+            except:
+                messages.warning(req, "INVALID INPUT !")
+        return render(req,'login.html')
+
+
     else:
         messages.warning(req, "INVALID INPUT !")
     return render(req,'login.html')
