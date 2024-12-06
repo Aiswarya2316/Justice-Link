@@ -124,7 +124,8 @@ def advocatehome(req):
     
 
 
-
+def about(req):
+    return render(req,'Client/aboutus.html')
 
 ##profile of user
 def clientprofile(req):

@@ -12,7 +12,12 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f8f9fa;
+      background-image: url('static/legal-law-concept-image-scales-justice-golden-light-legal-law-concept-image-scales-justice-golden-light-background-116766827.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      margin: 0;
     }
     .navbar {
       margin-bottom: 20px;
@@ -25,7 +30,7 @@
       overflow: hidden;
     }
     .card-img-top {
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #202020;
       width: 200px;
       height: 200px;
       justify-content: center;
@@ -51,7 +56,7 @@
       background-color: #7DC855;
       border-radius: 5px;
       font-size: 16px;
-      color: #FFFFFF;
+      color: #201f1f;
       text-decoration: none;
       padding: 12px 30px;
       transition: background-color 0.3s;
@@ -66,8 +71,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a href="../clienthome" class="navbar-brand">
-      <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="50px">
+    <a href="../clienthome" class="logo">
+        <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
@@ -81,33 +86,40 @@
           <a class="nav-link" href="../viewadvocates">View Advocate</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../bookings">Bookings</a>
+          <a class="nav-link" href="../bookings">Advocate Bookings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../contact">Contact</a>
+          <a class="nav-link" href="../about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../logout">Logout</a>
-        </li>
+            <a class="nav-link" href="../logout">logout</a>
+          </li>
       </ul>
+
       <!-- Social Media Icons -->
       <ul class="navbar-nav d-flex">
+        <!-- Twitter Icon -->
         <li class="nav-item">
           <a class="nav-link" href="https://twitter.com" target="_blank">
             <i class="fab fa-twitter"></i>
           </a>
         </li>
+        
+        <!-- Facebook Icon -->
         <li class="nav-item">
           <a class="nav-link" href="https://facebook.com" target="_blank">
             <i class="fab fa-facebook-f"></i>
           </a>
         </li>
+        
+        <!-- Instagram Icon -->
         <li class="nav-item">
           <a class="nav-link" href="https://instagram.com" target="_blank">
             <i class="fab fa-instagram"></i>
           </a>
         </li>
       </ul>
+
       <!-- Search Form -->
       <form class="d-flex">
         <input class="form-control me-2" type="text" placeholder="Search">
