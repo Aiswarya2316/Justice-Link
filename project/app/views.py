@@ -241,17 +241,32 @@ def filecase(req,id):
 
 
 def viewcases(req):
+    if 'advocate' not in req.session:
+        return redirect(login)  # Ensure the police officer is logged in
+
+    advocate = get_advocate(req)  # Helper function to fetch police officer details
+    case = Case.objects.filter(advocate=advocate).order_by('-created_at')
+
     if req.method == 'POST':
-        advocate_id = req.POST['advocate_id']
-        advocate = Advocate.objects.get(id=advocate_id)
-        
-        cases = Case.objects.filter(advocate=advocate)
-        
-        return render(req, 'Advocate/viewcases.html', {'cases': cases})
-    else:
-        advocates = Advocate.objects.all()
-        return render(req, 'Advocate/viewcases.html', {'advocates': advocates})
-    
+        case_id = req.POST.get('case_id')
+        new_status = req.POST.get('status')
+
+        try:
+            case = Case.objects.get(id=case_id, advocate=advocate)
+            case.status = new_status
+            case.save()
+            success_message = "Complaint status updated successfully."
+        except Case.DoesNotExist:
+            error_message = "Complaint not found or unauthorized action."
+
+        return render(req, 'Advocate/viewcases.html', {
+            'case': case,
+            'success_message': success_message if 'success_message' in locals() else None,
+            'error_message': error_message if 'error_message' in locals() else None,
+        })
+
+    return render(req, 'Advocate/viewcases.html', {'case': case})
+
 
 def bookings(req):
         cases = Case.objects.all()

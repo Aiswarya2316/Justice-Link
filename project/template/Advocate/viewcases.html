@@ -18,6 +18,71 @@
     .img{
       max-height: 370px;
     }
+
+    table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        thead {
+            background-color: #f1f1f1;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            color: #555;
+            font-weight: bold;
+        }
+        td {
+            color: #333;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .status-select {
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .message.success {
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .message.error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        .no-complaints {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 20px 0;
+        }
   </style>
 </head>
 <body>
@@ -62,31 +127,58 @@
 </div>
 
 <h2>Assigned Cases</h2>
-<form method="POST">
-    {% csrf_token %}
-    
-    <label for="advocate_id">Select Advocate</label>
-    <select name="advocate_id" required>
-        {% for advocate in advocates %}
-            <option value="{{ advocate.id }}">{{ advocate.name }}</option>
-        {% endfor %}
-    </select>
+<div class="card">
+  <!-- <h1>Complaints</h1> -->
+  <table>
+      <thead>
+          <tr>
+              <th>User</th>
+              <th>Subject</th>
+              <th>Description</th>
+              <!-- <th>Status</th> -->
+              <th>Created At</th>
+              <!-- <th>Action</th> -->
+          </tr>
+      </thead>
+      <tbody>
+          {% for cases in case %}
+              <tr>
+                  <td>{{ cases.client.username }}</td>
+                  <td>{{ cases.subject }}</td>
+                  <td>{{ cases.description }}</td>
+                  <!-- <td>{{ cases.status }}</td> -->
+                  <td>{{ cases.created_at }}</td>
+                  <!-- <td>
+                      <form method="POST" style="margin: 0;">
+                          {% csrf_token %}
+                          <input type="hidden" name="complaint_id" value="{{ complaint.id }}">
+                          <select name="status" class="status-select">
+                              <option value="Pending" {% if complaint.status == "Pending" %}selected{% endif %}>Pending</option>
+                              <option value="Registered" {% if complaint.status == "Registered" %}selected{% endif %}>Registered</option>
+                              <option value="Resolved" {% if complaint.status == "Resolved" %}selected{% endif %}>Resolved</option>
+                          </select>
+                          <button type="submit">Update</button>
+                          <a href="../delete/{{complaint.pk}}" class="btn btn-primary">Cancel</a>
+                          <a href="../viewuser" class="btn btn-primary">View User</a>
+                          
+                      </form>
+                  </td> -->
+              </tr>
+          {% empty %}
+              <tr>
+                  <td colspan="6" class="no-complaints">No Cases found.</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
 
-    <button type="submit">View Assigned Cases</button>
-</form>
-
-
-<ul>
-    {% for case in cases %}
-        <li>
-            <strong>Subject:</strong> {{ case.subject }}<br>
-            <strong>Description:</strong> {{ case.description }}<br>
-            <strong>Created At:</strong> {{ case.created_at }}<br>
-            <strong>Client:</strong> {{ case.client.username }}<br>
-        </li>
-    {% endfor %}
-</ul>
-
+  {% if success_message %}
+      <p class="message success">{{ success_message }}</p>
+  {% endif %}
+  {% if error_message %}
+      <p class="message error">{{ error_message }}</p>
+  {% endif %}
+</div>
 <!-- Footer -->
 <footer class="bg-dark text-light text-center py-3 mt-4">
   <div class="container">
