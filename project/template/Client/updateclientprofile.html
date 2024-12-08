@@ -20,9 +20,63 @@
       flex-direction: column;
     }
 
-    nav {
-      z-index: 1200;
-    }
+  /* Navbar */
+.navbar {
+  background-color: #212529; /* Dark background */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navigation Links */
+.navbar .nav-link {
+  color: #ffffff; /* White text */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.navbar .nav-link:hover {
+  color: #ffffff; /* Keep the text white on hover */
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #ffcc00; /* Yellow glow effect */
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover::after {
+  width: 100%; /* Full underline on hover */
+}
+
+/* Social Media Icons */
+.navbar .nav-item i {
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-item i:hover {
+  color: #ffcc00; /* Yellow glow on hover */
+}
+
+.navbar .nav-item a:hover {
+  color: #ffcc00; /* Yellow glow on hover */
+}
+/* Search Form */
+.navbar .form-control {
+  border-radius: 20px;
+  padding: 8px 16px;
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar .form-control:focus {
+  box-shadow: 0 0 8px #ffcc00;
+  border: 1px solid #ffcc00;
+}
 
     /* Center the form and make it transparent */
     .form-container {
@@ -91,19 +145,25 @@
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-      <a href="../clienthome" class="logo">
-          <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle" alt="logo" width="80px">
+      <!-- Logo -->
+      <a href="../clienthome" class="logo d-flex align-items-center">
+        <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle me-2" alt="logo" width="50px">
+        <!-- <span class="fw-bold text-white">AdvocateBooking</span> -->
       </a>
+  
+      <!-- Toggler Button for Mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
+  
       <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto">
+        <!-- Navigation Links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="../clientprofile">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../viewadvocates">View Advocate</a>
+            <a class="nav-link" href="../viewadvocates">View Advocates</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../bookings">Advocate Bookings</a>
@@ -112,28 +172,23 @@
             <a class="nav-link" href="../about">About</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="../logout">logout</a>
-            </li>
+            <a class="nav-link text-danger" href="../logout">Logout</a>
+          </li>
         </ul>
   
         <!-- Social Media Icons -->
-        <ul class="navbar-nav d-flex">
-          <!-- Twitter Icon -->
-          <li class="nav-item">
+        <ul class="navbar-nav d-flex align-items-center">
+          <li class="nav-item mx-2">
             <a class="nav-link" href="https://twitter.com" target="_blank">
               <i class="fab fa-twitter"></i>
             </a>
           </li>
-          
-          <!-- Facebook Icon -->
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <a class="nav-link" href="https://facebook.com" target="_blank">
               <i class="fab fa-facebook-f"></i>
             </a>
           </li>
-          
-          <!-- Instagram Icon -->
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <a class="nav-link" href="https://instagram.com" target="_blank">
               <i class="fab fa-instagram"></i>
             </a>
@@ -142,13 +197,12 @@
   
         <!-- Search Form -->
         <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-primary" type="button">Search</button>
+          <input class="form-control me-2 border-warning" type="text" placeholder="Search">
+          <button class="btn btn-warning" type="button">Search</button>
         </form>
       </div>
     </div>
   </nav>
-
 <div class="form-container">
     <div class="card">
         <form action="" method="post">
