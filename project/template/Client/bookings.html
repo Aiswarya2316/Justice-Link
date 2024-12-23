@@ -88,29 +88,68 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-      <a href="../clienthome" class="d-flex align-items-center">
-        <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle me-2" alt="logo" width="50px">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="../clientprofile">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="../viewadvocates">View Advocates</a></li>
-          <li class="nav-item"><a class="nav-link" href="../bookings">Advocate Bookings</a></li>
-          <li class="nav-item"><a class="nav-link" href="../about">About</a></li>
-          <li class="nav-item"><a class="nav-link text-danger" href="../logout">Logout</a></li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2 border-warning" type="text" placeholder="Search">
-          <button class="btn btn-warning" type="button">Search</button>
-        </form>
-      </div>
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a href="../clienthome" class="logo d-flex align-items-center">
+      <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle me-2" alt="logo" width="50px">
+      <!-- <span class="fw-bold text-white">AdvocateBooking</span> -->
+    </a>
+
+    <!-- Toggler Button for Mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <!-- Navigation Links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="../clientprofile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../viewadvocates">View Advocates</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../bookings">Advocate Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="../logout">Logout</a>
+        </li>
+      </ul>
+
+      <!-- Social Media Icons -->
+      <ul class="navbar-nav d-flex align-items-center">
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="https://twitter.com" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="https://facebook.com" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="https://instagram.com" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Search Form -->
+      <form class="d-flex">
+        <input class="form-control me-2 border-warning" type="text" placeholder="Search">
+        <button class="btn btn-warning" type="button">Search</button>
+      </form>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <h4 class="text-center mt-4"><b>Your Bookings</b></h4>
 
