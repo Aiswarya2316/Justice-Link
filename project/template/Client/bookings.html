@@ -10,174 +10,100 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      /* background-image: url('static/legal-law-concept-image-scales-justice-golden-light-legal-law-concept-image-scales-justice-golden-light-background-116766827.webp'); */
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       color: rgb(81, 35, 35);
-      
     }
-   /* Navbar */
-.navbar {
-  background-color: #212529; /* Dark background */
-  font-family: 'Arial', sans-serif;
-}
 
-/* Navigation Links */
-.navbar .nav-link {
-  color: #ffffff; /* White text */
-  transition: all 0.3s ease-in-out;
-  position: relative;
-}
+    .navbar {
+      background-color: #212529;
+    }
 
-.navbar .nav-link:hover {
-  color: #ffffff; /* Keep the text white on hover */
-}
+    .navbar .nav-link {
+      color: #ffffff;
+      transition: all 0.3s ease-in-out;
+    }
 
-.navbar .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: #ffcc00; /* Yellow glow effect */
-  left: 0;
-  bottom: 0;
-  transition: width 0.3s ease-in-out;
-}
+    .navbar .nav-link:hover {
+      color: #ffcc00;
+    }
 
-.navbar .nav-link:hover::after {
-  width: 100%; /* Full underline on hover */
-}
+    .navbar .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #ffcc00;
+      left: 0;
+      bottom: 0;
+      transition: width 0.3s ease-in-out;
+    }
 
-/* Social Media Icons */
-.navbar .nav-item i {
-  font-size: 1.2rem;
-  color: #ffffff;
-  transition: color 0.3s ease;
-}
+    .navbar .nav-link:hover::after {
+      width: 100%;
+    }
 
-.navbar .nav-item i:hover {
-  color: #ffcc00; /* Yellow glow on hover */
-}
+    .navbar .form-control:focus {
+      box-shadow: 0 0 8px #ffcc00;
+      border: 1px solid #ffcc00;
+    }
 
-.navbar .nav-item a:hover {
-  color: #ffcc00; /* Yellow glow on hover */
-}
-/* Search Form */
-.navbar .form-control {
-  border-radius: 20px;
-  padding: 8px 16px;
-  transition: box-shadow 0.3s ease;
-}
+    .card {
+      border: 2px solid #ffcc00;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease-in-out;
+    }
 
-.navbar .form-control:focus {
-  box-shadow: 0 0 8px #ffcc00;
-  border: 1px solid #ffcc00;
-}
-.card {
-     background-color: white;
-     border: 2px solid #ffcc00;
-     border-radius: 12px;
-     overflow: hidden;
-     width: 270px;
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-     transition: transform 0.3s ease-in-out;
- }
     .card:hover {
       transform: translateY(-5px);
     }
+
     .card-title {
       font-size: 1.2rem;
       font-weight: bold;
-      margin-bottom: 5px;
     }
-    .card-text {
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-    h4 {
-      text-align: center;
-      color: #ffc107;
-      margin-top: 30px;
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
+
     footer {
       background-color: #222;
       color: #ccc;
       padding: 20px 0;
     }
+
     footer a {
       color: #ffc107;
       text-decoration: none;
     }
+
     footer a:hover {
       text-decoration: underline;
     }
+
     footer .social-icons i {
       font-size: 1.5rem;
       margin: 0 10px;
-    }
-    footer .social-icons a {
-      color: #ffc107;
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-      <!-- Logo -->
-      <a href="../clienthome" class="logo d-flex align-items-center">
+      <a href="../clienthome" class="d-flex align-items-center">
         <img src="static/1000_F_153564985_MLVK4XbezrFZnuAg5mlncjcQp82GaNcn.jpg" class="rounded-circle me-2" alt="logo" width="50px">
-        <!-- <span class="fw-bold text-white">AdvocateBooking</span> -->
       </a>
-  
-      <!-- Toggler Button for Mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-  
       <div class="collapse navbar-collapse" id="mynavbar">
-        <!-- Navigation Links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="../clientprofile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../viewadvocates">View Advocates</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../bookings">Advocate Bookings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-danger" href="../logout">Logout</a>
-          </li>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="../clientprofile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="../viewadvocates">View Advocates</a></li>
+          <li class="nav-item"><a class="nav-link" href="../bookings">Advocate Bookings</a></li>
+          <li class="nav-item"><a class="nav-link" href="../about">About</a></li>
+          <li class="nav-item"><a class="nav-link text-danger" href="../logout">Logout</a></li>
         </ul>
-  
-        <!-- Social Media Icons -->
-        <ul class="navbar-nav d-flex align-items-center">
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="https://twitter.com" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="https://facebook.com" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="https://instagram.com" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-        </ul>
-  
-        <!-- Search Form -->
         <form class="d-flex">
           <input class="form-control me-2 border-warning" type="text" placeholder="Search">
           <button class="btn btn-warning" type="button">Search</button>
@@ -186,37 +112,34 @@
     </div>
   </nav>
 
-<!-- Page Title -->
-<h4><b>Your Bookings</b></h4>
+  <h4 class="text-center mt-4"><b>Your Bookings</b></h4>
 
-<!-- Container for Cards -->
-<div class="container my-5">
-  <div class="row g-4">
-    {% for i in cases %}
-      <div class="col-md-4">
-        <div class="card p-3">
-          <div class="card-body">
-            <h5 class="card-title">Subject: {{ i.subject }}</h5>
-            <p class="card-text">Description :{{ i.description }}</p>
+  <div class="container my-5">
+    <div class="row g-4">
+      {% for i in cases %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+          <div class="card p-3 w-100">
+            <div class="card-body">
+              <h5 class="card-title">Subject: {{ i.subject }}</h5>
+              <p class="card-text">Description: {{ i.description }}</p>
+            </div>
           </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
 
-<!-- Footer -->
-<footer class="text-center">
-  <div class="container">
-    <p>© 2024 Justice-Link. All Rights Reserved.</p>
-    <p class="social-icons">
-      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-    </p>
-    <p><a href="../about">About Us</a> | <a href="../contact">Contact</a> | <a href="../privacy">Privacy Policy</a></p>
-  </div>
-</footer>
+  <footer class="text-center">
+    <div class="container">
+      <p>@ 2024 Justice-Link. All Rights Reserved.</p>
+      <p class="social-icons">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </p>
+      <p><a href="../about">About Us</a> | <a href="../contact">Chat</a> | <a href="../clientprofile">Privacy</a></p>
+    </div>
+  </footer>
 
 </body>
 </html>
